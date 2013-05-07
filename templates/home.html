@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr />
+
+<form class="form-horizontal" action="/new" method="post">
+<legend>New Paste</legend>
+    <div>{{ form.author.label }} {{ form.author() }}</div>
+	
+		{% if form.errors.has_key('author') %}
+			<span class="label label-important">{{ ",".join(form.errors['author']) }}</span>
+		{% endif %}
+	
+	
+    <div>{{ form.title.label }} {{ form.title() }}</div>
+    
+		{% if form.errors.has_key('title') %}
+			<span class="label label-important">{{ ",".join(form.errors['title']) }}</span>
+		{% endif %}
+	
+    <div>{{form.language.label}} {{form.language()}}</div>
+		
+    <div>{{form.code.label}} {{form.code(cols='90', rows='10')|safe}} </div>
+		{% if form.errors.has_key('title') %}
+			<span class="label label-important">{{ ",".join(form.errors['code']) }}</span>
+		{% endif %}
+		
+    <div class="control-group">
+         <div class="controls">
+              <button type="submit" class="btn">Paste it</button>
+         </div>
+    </div>
+</form>
+{%endblock %}
+
+{%block sidebar%}
+    <hr />
+
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+     <h2>Last pastes</h2>
+
+    <ul>
+		{% for p in last5 %}
+			<li class="paste-link"><a href="/view/{{p.id}}">{{p.title or 'UNTITLED'}} - {{ p.author}}</a></li>
+        {% endfor %}
+    </ul>
+{%endblock%}

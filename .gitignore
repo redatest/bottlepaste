@@ -1,0 +1,13 @@
+*.pyc
+/bin
+/include
+/build
+/lib
+/lib64
+/src
+/share
+/man
+.Python
+*.swp
+*.xml
+*.iml

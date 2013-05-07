@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<div id="paste-details" style='margin:50px;'>
+    <div id="paste-info">
+        <strong{{paste.title}}</strong>
+        <hr />
+        <span>{% if paste.author %} 
+					<span class='icon-user'> </span>&nbsp;{{paste.author}}<br/>
+				  {% else %} 
+					<span class='icon-user'> </span> &nbsp; a Guest <br/>
+				  {% endif %} 
+				  <span class='icon-list'></span> &nbsp;SYNTAX: {{paste.language}}<br/>
+				  <span class='icon-star'></span>&nbsp; HITS: {{ paste.hits }}  <br/>
+				  PRIVATE: {{paste.is_private}}<br/>
+		</span>
+        <br/><span id="paste-links"><a href="/download/{{paste.id}}">Download</a><a href="/raw/{{paste.id}}"> | RAW</a><a href="/print/{{paste.id}}"> | PRINT</a></span>
+    </div>
+    <br/>
+    <div id="paste-code">{{code}}</div>
+
+</div>
+
+{%endblock %}
