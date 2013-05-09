@@ -15,3 +15,49 @@
 .highlight .sc { color: #2AA198 } /* Literal.String.Char */
 .highlight .vc { color: #268BD2 } /* Name.Variable.Class */
 .highlight .vg { color: #268BD2 } /* Name.Variable.Global */
+
+body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+      
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        padding: 8px 8px;
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+      textarea#code{
+		width:640px;
+	  }
+	.ul{
+		list-style:none;
+	}
+	
+	.jumbotron ul{
+		list-style:none;
+	}
+	
+	.home_image{
+		float:left; 
+		margin-right:5px;
+	}
+	.view_image{
+		float:left;
+		margin-right:8px
+	}

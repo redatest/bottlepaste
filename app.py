@@ -98,7 +98,7 @@ def contact():
  
 @error(404)
 def error404(error):
-    return '404=NOTHING HERE, GO BACK!'
+    return template('templates/404.html')
     
     
 @route("/")

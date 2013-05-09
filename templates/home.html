@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="span7 well">
+<div class="span9 well">
 
 <form class="form-horizontal" action="/new" method="post">
 <h2>New Paste</h2>
@@ -33,20 +33,21 @@
 {%endblock %}
 
 {%block sidebar%}
-    <div class="span5 well">
+    <div class="span3 well">
 		
-	<h2>Last pastes</h2>
-	<br/>
-    <dl style='list-style:none'>
-		{% for p in last5 %}
-			<img src="{{ p.gravatar_url() }}" alt="avatar" style='float:left; margin-right:5px;' />
-			<dt style='margin-left:8px'><a href="/view/{{p.id}}">{{p.title or 'UNTITLED'}}</a></dt>
-			<dd style='margin-left:8px;'>By {{ p.author}}</dd>
-			
-			
-			<br/>
-        {% endfor %}
-    </dl>
+		<h2>Last pastes</h2>
+		<br/>
+		<dl> 
+			{% for p in last5 %}
+				<img src="{{ p.gravatar_url() }}" alt="avatar" class="home_image" />
+				<dt style='margin-left:8px'><a href="/view/{{p.id}}">{{p.title or 'UNTITLED'}}</a></dt>
+				<dd style='margin-left:8px;'>By <span class="label label-success">{{ p.author | capitalize}}</span></dd>
+				
+				
+				<br/>
+			{% endfor %}
+		</dl>
     
     </div>
+	
 {%endblock%}
