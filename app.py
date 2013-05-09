@@ -14,6 +14,7 @@ from sqlalchemy import create_engine,desc
 from sqlalchemy import Column , DateTime , Integer , String
 from sqlalchemy.ext.declarative  import  declarative_base
 from sqlalchemy.orm import sessionmaker
+import hashlib
 
 import settings
 
@@ -34,6 +35,10 @@ class Paste(Base):
 	
 	def __str__(self):
 		return "(%d, %s, %s, %s, %s)"%(self.id, self.title, self.author, self.language, self.code)
+		
+	def gravatar_url(self):
+		return  "http://www.gravatar.com/avatar/%s?s=50&d=retro" % hashlib.md5(self.author).hexdigest()
+
 
 #fits here
 if not os.path.isfile('bottlepaste.db'):
@@ -83,13 +88,13 @@ class PasteForm(Form):
 
 
 	
-@route("/about")
+@route("/About")
 def about():
-    return template('templates/about.html')
+    return template('templates/about.html',last5=last_five())
 
-@route("/contact")
+@route("/Contact")
 def contact():
-    return template('templates/contact.html')
+    return template('templates/contact.html',last5=last_five())
  
 @error(404)
 def error404(error):

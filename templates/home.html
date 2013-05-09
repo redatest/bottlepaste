@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<hr />
+<div class="span7 well">
 
 <form class="form-horizontal" action="/new" method="post">
-<legend>New Paste</legend>
+<h2>New Paste</h2>
     <div>{{ form.author.label }} {{ form.author() }}</div>
 	
 		{% if form.errors.has_key('author') %}
@@ -20,32 +20,33 @@
 	
     <div>{{form.language.label}} {{form.language()}}</div>
 		
-    <div>{{form.code.label}} {{form.code(cols='90', rows='10')|safe}} </div>
+    <div>{{form.code.label}} {{form.code(cols='100', rows='10')|safe}} </div>
 		{% if form.errors.has_key('title') %}
 			<span class="label label-important">{{ ",".join(form.errors['code']) }}</span>
 		{% endif %}
 		
-    <div class="control-group">
-         <div class="controls">
-              <button type="submit" class="btn">Paste it</button>
-         </div>
-    </div>
+    <br/>
+              <button type="submit" class="btn btn-info">Paste it</button>
 </form>
+
+</div>
 {%endblock %}
 
 {%block sidebar%}
-    <hr />
-
+    <div class="span5 well">
+		
+	<h2>Last pastes</h2>
 	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-     <h2>Last pastes</h2>
-
-    <ul>
+    <dl style='list-style:none'>
 		{% for p in last5 %}
-			<li class="paste-link"><a href="/view/{{p.id}}">{{p.title or 'UNTITLED'}} - {{ p.author}}</a></li>
+			<img src="{{ p.gravatar_url() }}" alt="avatar" style='float:left; margin-right:5px;' />
+			<dt style='margin-left:8px'><a href="/view/{{p.id}}">{{p.title or 'UNTITLED'}}</a></dt>
+			<dd style='margin-left:8px;'>By {{ p.author}}</dd>
+			
+			
+			<br/>
         {% endfor %}
-    </ul>
+    </dl>
+    
+    </div>
 {%endblock%}

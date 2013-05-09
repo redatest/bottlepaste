@@ -1,7 +1,20 @@
 {% extends 'base.html' %}
 
-{% block content %}
-<hr/>
-Contact details goes
+{% block info %}
+<div class="jumbotron well">
+	
+<h3>Contact us</h3>
+
+    <form accept-charset="UTF-8" action="" method="POST">
+		<input type="text" name="user_new_message" id=""  placeholder='give us your email'/><br/>
+        <textarea class="span4" id="new_message" name="new_message"
+        placeholder="Type in your message" rows="5"></textarea>
+        
+    </form>
+	<button class="btn btn-info" type="submit">Post New Message</button>
+
+</div>
 
 {% endblock %}
+
+
